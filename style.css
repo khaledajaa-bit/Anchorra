@@ -34,10 +34,14 @@ a{color:inherit; text-decoration:none;}
     radial-gradient(1px 1px at 95% 75%, #fff 100%, transparent);
   background-repeat:repeat;
   background-size:600px 600px;
-  animation:twinkle 4s ease-in-out infinite alternate;
+  animation:twinkle 4s ease-in-out infinite alternate, drift 40s linear infinite;
   transition:transform .2s ease-out;
 }
 @keyframes twinkle{ from{opacity:.5;} to{opacity:1;} }
+@keyframes drift{
+  from{ background-position: 0 0; }
+  to{ background-position: 600px 600px; }
+}
 
 /* NAV */
 nav{
@@ -49,8 +53,8 @@ nav{
   border-bottom:2px solid var(--border);
 }
 .brand{display:flex; align-items:center; gap:10px; font-size:14px; letter-spacing:1px;}
-.anchor-icon{width:22px; height:22px; display:inline-block; animation:bob 3s ease-in-out infinite;}
-.anchor-icon img{width:100%; height:100%; object-fit:contain; image-rendering:pixelated;}
+.anchor-icon{width:34px; height:34px; display:inline-block; animation:bob 3s ease-in-out infinite;}
+.anchor-icon img{width:100%; height:100%; object-fit:contain;}
 @keyframes bob{
   0%,100%{ transform:translateY(0); }
   50%{ transform:translateY(-3px); }
@@ -172,7 +176,7 @@ h1.reveal-item{animation-delay:.3s;}
 .hud{
   max-width:900px; margin:0 auto;
   display:grid;
-  grid-template-columns:140px 1fr;
+  grid-template-columns:170px 1fr;
   gap:24px;
   background:var(--bg-panel);
   border:3px solid var(--border);
@@ -188,10 +192,9 @@ h1.reveal-item{animation-delay:.3s;}
   overflow:hidden;
 }
 .portrait-glyph{
-  width:60%;
-  height:60%;
+  width:82%;
+  height:82%;
   object-fit:contain;
-  image-rendering:pixelated;
   display:inline-block;
   animation:float 3.2s ease-in-out infinite;
 }
@@ -208,9 +211,17 @@ h1.reveal-item{animation-delay:.3s;}
 .bar-track{flex:1; height:14px; background:#0d0716; border:2px solid var(--border); position:relative; overflow:hidden;}
 .bar-fill{
   height:100%;
-  background:linear-gradient(90deg, var(--rose), var(--gold));
+  background-image:
+    repeating-linear-gradient(45deg, rgba(255,255,255,.3) 0 8px, transparent 8px 16px),
+    linear-gradient(90deg, var(--rose), var(--gold));
+  background-size:32px 32px, 100% 100%;
   width:0%;
   transition:width 1.4s ease;
+  animation:bar-stripes 1s linear infinite;
+}
+@keyframes bar-stripes{
+  from{ background-position: 0 0, 0 0; }
+  to{ background-position: 32px 0, 0 0; }
 }
 .speech{
   background:#0d0716;
@@ -310,7 +321,7 @@ footer .disclaimer{font-size:10px; color:#5c4d80; max-width:520px; margin:0 auto
   .nav-links{display:none;}
   h1.pixel-font{font-size:26px;}
   .hud{grid-template-columns:1fr;}
-  .portrait{width:80px; margin:0 auto;}
+  .portrait{width:100px; margin:0 auto;}
   .action-menu{grid-template-columns:repeat(2,1fr);}
   .chapter{grid-template-columns:1fr;}
 }
