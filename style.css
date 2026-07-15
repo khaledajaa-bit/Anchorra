@@ -49,8 +49,8 @@ nav{
   border-bottom:2px solid var(--border);
 }
 .brand{display:flex; align-items:center; gap:10px; font-size:14px; letter-spacing:1px;}
-.anchor-icon{width:20px; height:20px; display:inline-block; animation:bob 3s ease-in-out infinite;}
-.anchor-icon svg{width:100%; height:100%; image-rendering:pixelated;}
+.anchor-icon{width:22px; height:22px; display:inline-block; animation:bob 3s ease-in-out infinite;}
+.anchor-icon img{width:100%; height:100%; object-fit:contain; image-rendering:pixelated;}
 @keyframes bob{
   0%,100%{ transform:translateY(0); }
   50%{ transform:translateY(-3px); }
@@ -188,7 +188,10 @@ h1.reveal-item{animation-delay:.3s;}
   overflow:hidden;
 }
 .portrait-glyph{
-  font-size:40px;
+  width:60%;
+  height:60%;
+  object-fit:contain;
+  image-rendering:pixelated;
   display:inline-block;
   animation:float 3.2s ease-in-out infinite;
 }
