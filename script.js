@@ -1,3 +1,35 @@
+// ---------- Floating star particles ----------
+const starsContainer = document.getElementById('stars');
+const starColors = ['#ffffff', '#ffffff', '#ffffff', '#c9a3ff', '#f2b705'];
+
+function createStars(count = 70) {
+  if (!starsContainer) return;
+  for (let i = 0; i < count; i++) {
+    const star = document.createElement('div');
+    star.className = 'star-dot';
+
+    const size = Math.random() * 2.2 + 1; // 1px - 3.2px
+    const dx = (Math.random() * 24 - 12).toFixed(1) + 'px'; // -12px to 12px
+    const dy = (Math.random() * 24 - 12).toFixed(1) + 'px';
+    const duration = (Math.random() * 8 + 6).toFixed(1) + 's'; // 6s - 14s
+    const delay = (Math.random() * 6).toFixed(1) + 's';
+
+    star.style.width = size + 'px';
+    star.style.height = size + 'px';
+    star.style.left = Math.random() * 100 + '%';
+    star.style.top = Math.random() * 100 + '%';
+    star.style.background = starColors[Math.floor(Math.random() * starColors.length)];
+    star.style.setProperty('--dx', dx);
+    star.style.setProperty('--dy', dy);
+    star.style.animationDuration = duration;
+    star.style.animationDelay = delay;
+
+    starsContainer.appendChild(star);
+  }
+}
+
+createStars();
+
 // ---------- Scroll-triggered reveal ----------
 const revealEls = document.querySelectorAll('.reveal-on-scroll');
 
